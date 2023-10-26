@@ -13,7 +13,7 @@
 
 - - -
 
-PLUGIN DESCRIPTION
+A finite state machine designed to cover 95% of use cases, providing essential functionality and a basic state node that can be extended.
 
 - [Requirements](#requirements)
 - [✨Installation](#installation)
@@ -37,15 +37,17 @@ To manually install the plugin, create an **"addons"** folder at the root of you
 # Getting started
 The finite state machine can be added as any other node in the scene tree where you want to use it. 
 ![fsm-add-node](https://github.com/GodotParadise/FSM/blob/main/images/fsm_add_child.png)
-![fsm-added-scene-tree](https://github.com/GodotParadise/FSM/blob/main/images/fsm_added_scene_tree.jpg)
+![fsm-added-scene-tree](https://github.com/GodotParadise/FSM/blob/main/images/fsm_added_scene_tree.png)
+![fsm-example](https://github.com/GodotParadise/FSM/blob/main/images/fsm_example.png)
 
-⚠️ The finite state machine **always need at least one default state** to start with, this default state can be set on the exported variable `current_state`. Once this is done, when executing the scene this will be the current state of the machine until the conditions that change the state occur.
+⚠️ The finite state machine **always need at least one default state** to start with, this default state can be set on the exported variable `current_state`. Once this is done, when executing the scene this will be the current state of the machine until the conditions that change the state occur. 
+While nothing will break without it, having a defined initial state is good practice to start from.
 
 There will always be only one `physic_process()` or `_process()` since it is the main machine that is in charge of calling the virtual methods of each state.If your state overrides `physics_update()` will be executed as `physic_process()`
 
 `_enter()` and `_exit()` are called when the new state becomes the current and when it will transition to another state. They are useful to clean up or get ready some sort of parameters inside the state to be used only in this state.
  
-# Basics
+# Guide
 ## GodotParadiseState
 All the functions here are virtual, which means they can be overridden with the desired functionality in each case.
 
@@ -88,8 +90,26 @@ func _on_animation_player_finished(_name: String):
 
 func _on_animation_finished():
 	pass
-
 ```
+
+### _enter()
+This function executes when the state enters for the first time as the current state.
+### _exit()
+This function executes when the state exits from being the current state and transitions to the next one.
+### _handle_input(event)
+In case you want to customize how this state handle the inputs in your game this is the place to do that. The event type is InputEvent
+### physics_update(delta)
+This function executes on each frame of the finite state machine's physic process
+### update(delta)
+This function executes on each frame of the finite state machine's process
+### _on_animation_player_finished(name: String)
+You can use this function generically to execute custom logic when an AnimationPlayer finishes any animation. This receive the animation name as parameter to avoid errors and be consistent with the original signal.
+### _on_animation_finished()
+You can use this function generically to execute custom logic when an AnimatedSprite(2/3)D finishes any animation. This does not receive any params to avoid errors and be consistent with the original signal.
+
+## Signals
+- *state_entered*
+- *state_finished(next_state, params: Dictionary)*
 
 So for example if you want to implement a **Idle** state it's easy as:
 ```py
@@ -100,12 +120,79 @@ func _enter() -> void:
 	# set velocity to zero...
 
 func _exit() -> void:
-	# stop animation...
+	# stop animation...s
 
 func _physics_update(delta):
 	# detect the input direction to change to another state such as Walk or Crouch
 ```
 
+# The Finite State Machine *(FSM)*
+## Exported parameters
+- current_state: GodotParadiseState = null
+- stack_capacity: int = 3
+- flush_stack_when_reach_capacity: bool = false
+- enable_stack: bool = true
+## Accessible parameters
+- states: Dictionary
+- states_stack: Array[GodotParadiseState]
+- locked: bool
+
+When this node is ready in the scene tree, all the states detected as children **at any nesting level** are saved in a dictionary for easy access by their node names. 
+
+The **finite state machine** connects to all the `state_finished` signals from the nested existing states.
+When a change state happens and the **stack is enabled**, the previous state is appended to the `states_stack`. You can define a `stack_capacity` to define the number of previous states you want to save. This stack is accessible on each state to handle conditions in which we need to know which states have been previously transitioned.
+The locked value enables the state machine to be locked or unlocked for state execution. It can be resumed by resetting it to false. When it's locked **the stack is also disabled.**
+
+## How to change the state
+This is an example of code that changes state from Idle to Run:
+```py
+if not horizontal_direction.is_zero_approx() and owner.is_on_floor():
+	## First parameter can be the class String name or the Class itself
+	state_finished.emit("Run", {})
+	#or 
+	state_finished.emit(Run, {"sprint_time": 4.0})
+	return
+```
+As you can see, within each individual state, you have the option to emit the `state_finished` signal, which will be monitored by the parent state machine.
+
+## Functions
+Usually **you don't really want to call this functions manually**, it is preferable to emit signals from the states themselves and let the finite state machine react to these signals in order to execute actions such as changing the state. By the way, nothing stops you yo do that and may be needed in your use case.
+
+### change_state(state: GodotParadiseState, params: Dictionary = {}, force: bool = false)
+Changes the current state to the next state passed as parameter if they are not the same. This action can be forced with the third parameter force.
+If the state can be transitioned, the `_exit()` function from the current state and the `_enter()` function of the next state will be executed.
+In this transition the new state can receive external parameters. Emits the signal `state_changed`
+
+### change_state_by_name(name: String, params: Dictionary = {}, force: bool = false)
+Perform the same action as the `change_state` function but by receiving the state with the name it has in the states dictionary. For example, if we have a node state named **'Idle'** in the scene, it can be changed using `change_state_by_name("Idle")`
+
+### enter_state(state: GodotParadiseState, previous_state: GodotParadiseState)
+This function is called when a new state becomes the current state. During this process, the `state_entered` signal is emitted.
+
+### exit_state(state: GodotParadiseState)
+Exit the state passed as parameter, execute the `_exit()` function on this state.
+### get_state(name: String)
+Returns the state node using the dictionary key from the states variable if it exists, or null if it does not.
+
+### has_state(name: String) -> bool
+Check if the state with that name exists on the states dictionary
+
+### current_state_is(state: GodotParadiseState) -> bool
+Check if the current state is the one passed as parameter
+
+### current_state_name_is(name: String) -> bool
+Same as above but using the dictionary key from states
+
+### lock_state_machine()
+Lock the state machine, all the process are set to false and the stack is disabled. This function is called automatically when locked changes to false
+
+### unlock_state_machine()
+Unlock the machine, all the process are set to true and stack is enabled again (if it was enabled). This function is called automatically when locked changes to true
+
+## Signals
+- *state_changed(from_state: GodotParadiseState, state: GodotParadiseState)*
+- *stack_pushed(new_state: GodotParadiseState, stack:Array[GodotParadiseState])*
+- *stack_flushed(flushed_states: Array[GodotParadiseState])*
 
 
 # ✌️You are welcome to
