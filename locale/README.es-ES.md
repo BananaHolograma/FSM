@@ -28,7 +28,7 @@ Una máquina de estados finitos diseñada para cubrir el 95% de los casos de uso
 		- [update(delta)](#updatedelta)
 		- [\_on\_animation\_player\_finished(name: String)](#_on_animation_player_finishedname-string)
 		- [\_on\_animation\_finished()](#_on_animation_finished)
-	- [Signals](#signals)
+	- [Señales](#señales)
 - [The Finite State Machine *(FSM)*](#the-finite-state-machine-fsm)
 	- [Parámetros exportados](#parámetros-exportados)
 	- [Parámetros accessibles como variable](#parámetros-accessibles-como-variable)
@@ -44,7 +44,7 @@ Una máquina de estados finitos diseñada para cubrir el 95% de los casos de uso
 		- [current\_state\_name\_is(name: String) -\> bool](#current_state_name_isname-string---bool)
 		- [lock\_state\_machine()](#lock_state_machine)
 		- [unlock\_state\_machine()](#unlock_state_machine)
-	- [Signals](#signals-1)
+	- [Señales](#señales-1)
 - [✌️Eres bienvenido a](#️eres-bienvenido-a)
 - [🤝Normas de contribución](#normas-de-contribución)
 - [📇Contáctanos](#contáctanos)
@@ -130,7 +130,7 @@ Puedes usar esta función genéricamente para ejecutar lógica personalizada cua
 ### _on_animation_finished()
 Puede usar esta función genéricamente para ejecutar lógica personalizada cuando un AnimatedSprite(2/3)D termina cualquier animación. Esta función no recibe ningún parámetro para evitar errores y ser consistente con la señal original.
 
-## Signals
+## Señales
 - *state_entered*
 - *state_finished(next_state, params: Dictionary)*
 
@@ -209,7 +209,7 @@ Bloquea la FSM, todos los procesos son seteados a false y el stack es deshabilit
 ### unlock_state_machine()
 Desbloquea la máquina si estaba bloqueado, todos los procesos son seteados a true y el stack es habilitado de nuevo. Esta función es llamada automáticamente cuando la variable `locked` cambia a true.
 
-## Signals
+## Señales
 - *state_changed(from_state: GodotParadiseState, state: GodotParadiseState)*
 - *stack_pushed(new_state: GodotParadiseState, stack:Array[GodotParadiseState])*
 - *stack_flushed(flushed_states: Array[GodotParadiseState])*
