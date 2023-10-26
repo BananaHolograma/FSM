@@ -1,14 +1,15 @@
 <p align="center">
-	<img width="256px" src="https://github.com/GodotParadise/[PLUGIN]/blob/main/icon.jpg" alt="GodotParadise[PLUGIN] logo" />
-	<h1 align="center">Godot Paradise [PLUGIN]</h1>
+	<img width="256px" src="https://github.com/GodotParadise/FSM/blob/main/icon.jpg" alt="GodotParadiseFSM logo" />
+	<h1 align="center">Godot Paradise FSM</h1>
 	
-[![LastCommit](https://img.shields.io/github/last-commit/GodotParadise/[PLUGIN]?cacheSeconds=600)](https://github.com/GodotParadise/[PLUGIN]/commits)
-[![Stars](https://img.shields.io/github/stars/godotparadise/[PLUGIN])](https://github.com/GodotParadise/[PLUGIN]/stargazers)
-[![Total downloads](https://img.shields.io/github/downloads/GodotParadise/[PLUGIN]/total.svg?label=Downloads&logo=github&cacheSeconds=600)](https://github.com/GodotParadise/[PLUGIN]/releases)
-[![License](https://img.shields.io/github/license/GodotParadise/[PLUGIN]?cacheSeconds=2592000)](https://github.com/GodotParadise/[PLUGIN]/blob/main/LICENSE.md)
+[![LastCommit](https://img.shields.io/github/last-commit/GodotParadise/FSM?cacheSeconds=600)](https://github.com/GodotParadise/FSM/commits)
+[![Stars](https://img.shields.io/github/stars/godotparadise/FSM)](https://github.com/GodotParadise/FSM/stargazers)
+[![Total downloads](https://img.shields.io/github/downloads/GodotParadise/FSM/total.svg?label=Downloads&logo=github&cacheSeconds=600)](https://github.com/GodotParadise/FSM/releases)
+[![License](https://img.shields.io/github/license/GodotParadise/FSM?cacheSeconds=2592000)](https://github.com/GodotParadise/FSM/blob/main/LICENSE.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=github)](https://github.com/godotparadise/FSM/pulls)
 </p>
 
-[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/GodotParadise/[PLUGIN]/blob/main/locale/README.es-ES.md)
+[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/GodotParadise/FSM/blob/main/locale/README.es-ES.md)
 
 - - -
 
@@ -33,10 +34,14 @@ You can download this plugin from the official [Godot asset library](https://god
 ##  Manual 
 To manually install the plugin, create an **"addons"** folder at the root of your Godot project and then download the contents from the **"addons"** folder of this repository
 
+
+
+
+
 # ✌️You are welcome to
-- [Give feedback](https://github.com/GodotParadise/[PLUGIN]/pulls)
-- [Suggest improvements](https://github.com/GodotParadise/[PLUGIN]/issues/new?assignees=BananaHolograma&labels=enhancement&template=feature_request.md&title=)
-- [Bug report](https://github.com/GodotParadise/[PLUGIN]/issues/new?assignees=BananaHolograma&labels=bug%2C+task&template=bug_report.md&title=)
+- [Give feedback](https://github.com/GodotParadise/FSM/pulls)
+- [Suggest improvements](https://github.com/GodotParadise/FSM/issues/new?assignees=BananaHolograma&labels=enhancement&template=feature_request.md&title=)
+- [Bug report](https://github.com/GodotParadise/FSM/issues/new?assignees=BananaHolograma&labels=bug%2C+task&template=bug_report.md&title=)
 
 GodotParadise is available for free.
 
@@ -46,7 +51,7 @@ If you're grateful for what we're doing, please consider a donation. Developing 
 # 🤝Contribution guidelines
 **Thank you for your interest in Godot Paradise!**
 
-To ensure a smooth and collaborative contribution process, please review our [contribution guidelines](https://github.com/GodotParadise/[PLUGIN]/blob/main/CONTRIBUTING.md) before getting started. These guidelines outline the standards and expectations we uphold in this project.
+To ensure a smooth and collaborative contribution process, please review our [contribution guidelines](https://github.com/GodotParadise/FSM/blob/main/CONTRIBUTING.md) before getting started. These guidelines outline the standards and expectations we uphold in this project.
 
 **📓Code of Conduct:** We strictly adhere to the [Godot code of conduct](https://godotengine.org/code-of-conduct/) in this project. As a contributor, it is important to respect and follow this code to maintain a positive and inclusive community.
 
