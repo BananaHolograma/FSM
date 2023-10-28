@@ -15,10 +15,12 @@
 - - -
 
 A finite state machine designed to cover 95% of use cases, providing essential functionality and a basic state node that can be extended.
+
 - [Requirements](#requirements)
 - [✨Installation](#installation)
 	- [Automatic (Recommended)](#automatic-recommended)
 	- [Manual](#manual)
+	- [CSharp version](#csharp-version)
 - [Getting started](#getting-started)
 - [Guide](#guide)
 	- [GodotParadiseState](#godotparadisestate)
@@ -60,6 +62,9 @@ A finite state machine designed to cover 95% of use cases, providing essential f
 You can download this plugin from the official [Godot asset library](https://godotengine.org/asset-library/asset/2039) using the AssetLib tab in your godot editor. Once installed, you're ready to get started
 ##  Manual 
 To manually install the plugin, create an **"addons"** folder at the root of your Godot project and then download the contents from the **"addons"** folder of this repository.
+## CSharp version
+This plugin has also been written in C# and you can find it on [FSM-CSharp](https://github.com/GodotParadise/FSM-CSharp)
+
 
 # Getting started
 The finite state machine can be added as any other node in the scene tree where you want to use it. 

@@ -1,3 +1,13 @@
+##
+# Created by https://github.com/GodotParadise organization with LICENSE MIT
+# There are no restrictions on modifying, sharing, or using this component commercially
+# We greatly appreciate your support in the form of stars, as they motivate us to continue our journey of enhancing the Godot community
+# ***************************************************************************************
+# A finite state machine designed to cover 95% of use cases, providing essential functionality and a basic state node that can be extended.
+
+# There is nothing wrong using the same process on the CharacterBody2D to handle all the movement but when the things start to grow and the player can perform a wide number of moves it is better to start thinking about a modular way to build this movement. 
+# In this case, a state machine is a design pattern widely employed in the video game industry to manage this complexity
+##
 class_name GodotParadiseFiniteStateMachine extends Node
 
 signal state_changed(from_state: GodotParadiseState, state: GodotParadiseState)
@@ -83,8 +93,8 @@ func push_state_to_stack(state: GodotParadiseState) -> void:
 	if enable_stack and stack_capacity > 0:
 		if states_stack.size() >= stack_capacity:
 			if flush_stack_when_reach_capacity:
-				states_stack.clear()
 				stack_flushed.emit(states_stack)
+				states_stack.clear()
 			else:
 				states_stack.pop_front()
 			

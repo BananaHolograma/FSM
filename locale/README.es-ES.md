@@ -20,6 +20,7 @@ Una máquina de estados finitos diseñada para cubrir el 95% de los casos de uso
 - [✨Instalacion](#instalacion)
 	- [Automatica (Recomendada)](#automatica-recomendada)
 	- [Manual](#manual)
+	- [CSharp version](#csharp-version)
 - [Guia](#guia)
 	- [GodotParadiseState](#godotparadisestate)
 		- [\_enter()](#_enter)
@@ -59,6 +60,8 @@ Una máquina de estados finitos diseñada para cubrir el 95% de los casos de uso
 Puedes descargar este plugin desde la [Godot asset library](https://godotengine.org/asset-library/asset/2039) oficial usando la pestaña AssetLib de tu editor Godot. Una vez instalado, estás listo para empezar
 ## Manual 
 Para instalar manualmente el plugin, crea una carpeta **"addons"** en la raíz de tu proyecto Godot y luego descarga el contenido de la carpeta **"addons"** de este repositorio
+## CSharp version
+Este plugin también ha sido escrito en C# y puedes encontrarlo en [FSM-CSharp](https://github.com/GodotParadise/FSM-CSharp)
 
 
 La máquina de estados finitos se puede añadir como cualquier otro nodo del árbol de escenas donde se quiera utilizar.
