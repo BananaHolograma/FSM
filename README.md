@@ -186,6 +186,8 @@ if not horizontal_direction.is_zero_approx() and owner.is_on_floor():
 	return
 ```
 As you can see, within each individual state, you have the option to emit the `state_finished` signal, which will be monitored by the parent state machine.
+You can find a more complex example in the repository [FirstPersonController](https://github.com/GodotParadise/First-Person-Controller/tree/main/first_person_controller/state_machine)
+
 
 ## Functions
 Usually **you don't really want to call this functions manually**, it is preferable to emit signals from the states themselves and let the finite state machine react to these signals in order to execute actions such as changing the state. By the way, nothing stops you yo do that and may be needed in your use case.

@@ -179,6 +179,7 @@ if not horizontal_direction.is_zero_approx() and owner.is_on_floor():
 	return
 ```
 Como puedes ver, dentro de cada estado individual, tienes la opción de emitir la señal `state_finished`, que será monitorizada por la máquina de estados padre.
+Puedes encontrar un ejemplo mas complejo en el repositorio [FirstPersonController](https://github.com/GodotParadise/First-Person-Controller/tree/main/first_person_controller/state_machine)
 
 ## Funciones
 Normalmente **no se desea llamar a estas funciones manualmente**, es preferible emitir señales desde los propios estados y dejar que la máquina de estados finitos reaccione a estas señales para ejecutar acciones como cambiar el estado. Por cierto, nada te impide hacerlo y puede ser necesario en tu caso de uso.
