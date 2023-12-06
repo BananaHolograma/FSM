@@ -1,11 +1,15 @@
-class_name GodotParadiseState extends Node
+class_name State extends Node
 
 signal state_entered
 signal state_finished(next_state, params: Dictionary)
 
-var previous_states: Array[GodotParadiseState] = []
+var FSM: FiniteStateMachine
+var previous_states: Array[State] = []
 var params: Dictionary = {}
 
+func ready() -> void:
+	pass
+	
 func _enter() -> void:
 	pass
 	

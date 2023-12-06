@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0ju8gk736n5d"
-path="res://.godot/imported/icon.png-bbec02a73ba76cdc181890f952b173d7.ctex"
+path="res://.godot/imported/icon.png-8ba09870f60a26fbb27e843f18dbe9ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/godot_paradise_fsm/icon.png"
-dest_files=["res://.godot/imported/icon.png-bbec02a73ba76cdc181890f952b173d7.ctex"]
+source_file="res://addons/finite-state-machine/icons/icon.png"
+dest_files=["res://.godot/imported/icon.png-8ba09870f60a26fbb27e843f18dbe9ea.ctex"]
 
 [params]
 
